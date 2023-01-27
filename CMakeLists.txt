@@ -61,6 +61,11 @@ target_link_libraries(picoprobe PRIVATE
         FreeRTOS-Kernel-Heap1
 )
 
+if(XIAO)
+        pico_enable_stdio_uart(picoprobe 0)
+        target_compile_definitions(picoprobe PRIVATE XIAO_PINOUT=1)
+endif()
+
 pico_set_binary_type(picoprobe copy_to_ram)
 
 pico_add_extra_outputs(picoprobe)

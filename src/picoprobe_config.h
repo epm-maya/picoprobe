@@ -46,6 +46,40 @@
 #endif
 
 
+#ifdef XIAO_PINOUT
+
+/* XIAO
+
+A0 26 | 5V
+A1 27 | GND
+A2 28 | 3V3
+A3 29 | 3 SWCLK
+D4  6 | 4 SWDIO
+D5  7 | 2 nRESET
+TX  0 | 1 RX
+
+*/
+
+// PIO config
+#define PROBE_SM 0
+#define PROBE_PIN_OFFSET 3
+#define PROBE_PIN_SWCLK (PROBE_PIN_OFFSET + 0) // 3
+#define PROBE_PIN_SWDIO (PROBE_PIN_OFFSET + 1) // 4
+
+// Target reset config
+#define PROBE_PIN_RESET 2
+
+// UART config
+#define PICOPROBE_UART_TX 0
+#define PICOPROBE_UART_RX 1
+#define PICOPROBE_UART_INTERFACE uart0
+#define PICOPROBE_UART_BAUDRATE 115200
+
+// LED config
+#define PICOPROBE_LED 25
+
+#else
+
 // PIO config
 #define PROBE_SM 0
 #define PROBE_PIN_OFFSET 2
@@ -70,6 +104,8 @@
 #error PICO_DEFAULT_LED_PIN is defined as -1, run PICOPROBE_LED=<led_pin> cmake
 #else
 #define PICOPROBE_LED PICO_DEFAULT_LED_PIN
+#endif
+
 #endif
 
 #define PROTO_OPENOCD_CUSTOM 0
