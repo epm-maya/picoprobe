@@ -35,6 +35,7 @@ TX  0 | 1 RX
 
 // LED config
 #define PICOPROBE_USB_CONNECTED_LED 25
+#define PICOPROBE_DAP_RUNNING_LED   17
 
 #define PROBE_PRODUCT_STRING "Picoprobe_xiao (CMSIS-DAP)"
 
