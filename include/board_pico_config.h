@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2021 a-pushkin on GitHub
+ * Copyright (c) 2023 Raspberry Pi (Trading) Ltd.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,28 @@
  *
  */
 
-#ifndef LED_H
-#define LED_H
+#ifndef BOARD_PICO_H_
+#define BOARD_PICO_H_
 
-void led_init(void);
+#define PROBE_IO_RAW
+#define PROBE_CDC_UART
+
+// PIO config
+#define PROBE_SM 0
+#define PROBE_PIN_OFFSET 2
+#define PROBE_PIN_SWCLK (PROBE_PIN_OFFSET + 0) // 2
+#define PROBE_PIN_SWDIO (PROBE_PIN_OFFSET + 1) // 3
+// Target reset config
+#define PROBE_PIN_RESET 0
+
+// UART config
+#define PICOPROBE_UART_TX 4
+#define PICOPROBE_UART_RX 5
+#define PICOPROBE_UART_INTERFACE uart1
+#define PICOPROBE_UART_BAUDRATE 115200
+
+#define PICOPROBE_USB_CONNECTED_LED 25
+
+#define PROBE_PRODUCT_STRING "Picoprobe (CMSIS-DAP)"
 
 #endif
