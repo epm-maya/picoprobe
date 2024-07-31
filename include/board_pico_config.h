@@ -35,16 +35,18 @@
 #define PROBE_PIN_SWCLK (PROBE_PIN_OFFSET + 0) // 2
 #define PROBE_PIN_SWDIO (PROBE_PIN_OFFSET + 1) // 3
 // Target reset config
-#define PROBE_PIN_RESET 0
+#if false
+#define PROBE_PIN_RESET 1
+#endif
 
 // UART config
-#define PICOPROBE_UART_TX 4
-#define PICOPROBE_UART_RX 5
-#define PICOPROBE_UART_INTERFACE uart1
-#define PICOPROBE_UART_BAUDRATE 115200
+#define PROBE_UART_TX 4
+#define PROBE_UART_RX 5
+#define PROBE_UART_INTERFACE uart1
+#define PROBE_UART_BAUDRATE 115200
 
-#define PICOPROBE_USB_CONNECTED_LED 25
+#define PROBE_USB_CONNECTED_LED 25
 
-#define PROBE_PRODUCT_STRING "Picoprobe (CMSIS-DAP)"
+#define PROBE_PRODUCT_STRING "Debugprobe on Pico (CMSIS-DAP)"
 
 #endif

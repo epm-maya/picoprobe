@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2021 Raspberry Pi (Trading) Ltd.
+ * Copyright (c) 2023 Raspberry Pi (Trading) Ltd.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,42 +23,33 @@
  *
  */
 
-#ifndef PICOPROBE_H_
-#define PICOPROBE_H_
+#ifndef BOARD_DEBUG_PROBE_H_
+#define BOARD_DEBUG_PROBE_H_
 
-#if false
-#define picoprobe_info(format,args...) printf(format, ## args)
-#else
-#define picoprobe_info(format,...) ((void)0)
-#endif
+#define PROBE_IO_SWDI
+#define PROBE_CDC_UART
+// No reset pin 
 
+// PIO config
+#define PROBE_SM 0
+#define PROBE_PIN_OFFSET 12
+#define PROBE_PIN_SWCLK (PROBE_PIN_OFFSET + 0)
+// For level-shifted input.
+#define PROBE_PIN_SWDI (PROBE_PIN_OFFSET + 1)
+#define PROBE_PIN_SWDIO (PROBE_PIN_OFFSET + 2)
 
-#if false
-#define picoprobe_debug(format,args...) printf(format, ## args)
-#else
-#define picoprobe_debug(format,...) ((void)0)
-#endif
+// UART config
+#define PROBE_UART_TX 4
+#define PROBE_UART_RX 5
+#define PROBE_UART_INTERFACE uart1
+#define PROBE_UART_BAUDRATE 115200
 
-#if false
-#define picoprobe_dump(format,args...) printf(format, ## args)
-#else
-#define picoprobe_dump(format,...) ((void)0)
-#endif
+#define PROBE_USB_CONNECTED_LED 2
+#define PROBE_DAP_CONNECTED_LED 15
+#define PROBE_DAP_RUNNING_LED 16
+#define PROBE_UART_RX_LED 7
+#define PROBE_UART_TX_LED 8
 
-// TODO tie this up with PICO_BOARD defines in the main SDK
-
-#ifdef XIAO_PINOUT
-#include "board_xiao_config.h"
-#else
-#include "board_pico_config.h"
-#endif
-
-#define PROTO_DAP_V1 1
-#define PROTO_DAP_V2 2
-
-// Interface config
-#ifndef PICOPROBE_DEBUG_PROTOCOL
-#define PICOPROBE_DEBUG_PROTOCOL PROTO_DAP_V2
-#endif
+#define PROBE_PRODUCT_STRING "Debug Probe (CMSIS-DAP)"
 
 #endif
