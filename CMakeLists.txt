@@ -68,15 +68,11 @@ target_link_libraries(debugprobe PRIVATE
         FreeRTOS-Kernel-Heap1
 )
 
-<<<<<<< HEAD
 if(XIAO)
-        pico_enable_stdio_uart(picoprobe 0)
-        target_compile_definitions(picoprobe PRIVATE XIAO_PINOUT=1)
+        pico_enable_stdio_uart(debugprobe 0)
+        target_compile_definitions(debugprobe PRIVATE XIAO_PINOUT=1 XIAO_STDIO=0)
 endif()
 
-pico_set_binary_type(picoprobe copy_to_ram)
-=======
 pico_set_binary_type(debugprobe copy_to_ram)
->>>>>>> master
 
 pico_add_extra_outputs(debugprobe)

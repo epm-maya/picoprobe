@@ -87,7 +87,10 @@ int main(void) {
     usb_serial_init();
     cdc_uart_init();
     tusb_init();
+
+#if XIAO_STDIO
     stdio_uart_init();
+#endif
 
     DAP_Setup();
 
